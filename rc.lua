@@ -95,7 +95,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock('<span font="Ubuntu 10"> %a %b %e %R </span>', 5)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -155,6 +155,9 @@ screen.connect_signal("property::geometry", set_wallpaper)
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
+
+    s.systray = wibox.widget.systray()
+    s.systray.visible = false
 
     -- Each screen has its own tag table.
     awful.tag({"š", "Š", "š", "Š", "š", "Š", "š", "Š", "š", }, s, awful.layout.layouts[1])
@@ -270,7 +273,7 @@ awful.screen.connect_for_each_screen(function(s)
                 volume,
                 sep,
                 {
-                    wibox.widget.systray(),
+                    s.systray,
                     margins = 10,
                     widget  = wibox.container.margin
                 },
@@ -360,6 +363,9 @@ globalkeys = gears.table.join(
               {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
+
+    awful.key({ modkey }, "\\", function () awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible end, 
+              {description = "Toggle systray visibility", group = "custom"}),
 
     awful.key({ modkey, "Control" }, "n",
               function ()
@@ -636,24 +642,21 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Gaps
 beautiful.useless_gap = 30
 
--- Autostart AppsR
+-- Autostart Apps
 
-awful.spawn.with_shell("wal -R")
+awful.spawn.with_shell("blue-off")
 awful.spawn.with_shell("guake --hide")
 awful.spawn.with_shell("picom --experimental-backends -b")
 
-awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell("flameshot")
+awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell("blueman-applet")
 awful.spawn.with_shell("optimus-manager-qt")
 awful.spawn.with_shell("/usr/bin/prime-offload")
 
 awful.spawn.with_shell("pkill cbatticon")
 awful.spawn.with_shell("cbatticon -u 7 -r 15 -l 25 -c 'poweroff'")
-
-
--- add to .bash_profile
--- wal -qi ~/Pictures/wallpapers
+awful.spawn.with_shell("wal -qi ~/Pictures/wallpapers")
 
 -- awful.spawn.with_shell("bash ~/.config/awesome/wallpaper.sh")
 -- awful.spawn.with_shell("compton -f")

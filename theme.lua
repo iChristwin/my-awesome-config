@@ -14,22 +14,22 @@ local theme = {}
 
 theme.font          = "sans 8"
 
-theme.bg_normal     = xrdb.background
-theme.bg_focus      = xrdb.color3 .. "67"
-theme.bg_urgent     = "#ffaaaa"
-theme.bg_minimize   = xrdb.color8
-theme.bg_systray    = theme.bg_normal
+theme.bg_normal     = "#222222"
+theme.bg_focus      = "#00000055"
+theme.bg_urgent     = "#000000"
+theme.bg_minimize   = "#444444"
+theme.bg_systray    = "#000000ff"
 
-theme.fg_normal     = xrdb.foreground
-theme.fg_focus      = xrdb.color12awwesom
-theme.fg_urgent     = theme.bg_normal
-theme.fg_minimize   = theme.bg_normal
+theme.fg_normal     = "#aaaaaa"
+theme.fg_focus      = "#ffdd00"
+theme.fg_urgent     = "#ff9900"
+theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
-theme.border_normal = xrdb.color0
-theme.border_focus  = theme.bg_focus
-theme.border_marked = xrdb.color10
+theme.border_normal = "#000000"
+theme.border_focus  = "#535d6c"
+theme.border_marked = "#91231c"
 
 theme.tasklist_bg_focus = "000000"
 theme.tasklist_bg_normal = "000000"
