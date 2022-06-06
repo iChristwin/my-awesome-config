@@ -633,22 +633,29 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_nor
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
+-- Gaps
+beautiful.useless_gap = 30
+
 -- Autostart AppsR
 
+awful.spawn.with_shell("wal -R")
 awful.spawn.with_shell("guake --hide")
 awful.spawn.with_shell("picom --experimental-backends -b")
-awful.spawn.with_shell("/usr/bin/prim-offload")
-awful.spawn.with_shell("optimus-manager-qt")
+
+awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell("flameshot")
 awful.spawn.with_shell("blueman-applet")
-awful.spawn.with_shell("wal -qi ~/Pictures/wallpapers")
+awful.spawn.with_shell("optimus-manager-qt")
+awful.spawn.with_shell("/usr/bin/prime-offload")
 
 awful.spawn.with_shell("pkill cbatticon")
 awful.spawn.with_shell("cbatticon -u 7 -r 15 -l 25 -c 'poweroff'")
 
+
+-- add to .bash_profile
+-- wal -qi ~/Pictures/wallpapers
+
 -- awful.spawn.with_shell("bash ~/.config/awesome/wallpaper.sh")
 -- awful.spawn.with_shell("compton -f")
+-- awful.spawn.with_shell("~/Apps/reset.sh")
 -- awful.spawn.with_shell("nitrogen --random ~/Pictures/wallpapers/")
-
--- Gaps
-beautiful.useless_gap = 30

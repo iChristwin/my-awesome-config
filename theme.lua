@@ -15,16 +15,15 @@ local theme = {}
 theme.font          = "sans 8"
 
 theme.bg_normal     = xrdb.background
-theme.bg_focus      = xrdb.color12 .. "67"
+theme.bg_focus      = xrdb.color3 .. "67"
 theme.bg_urgent     = "#ffaaaa"
-theme.bg_minimize   = "#000000"
---theme.bg_minimize   = xrdb.color8
+theme.bg_minimize   = xrdb.color8
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = xrdb.foreground
-theme.fg_focus      = theme.bg_normal
+theme.fg_focus      = xrdb.color12awwesom
 theme.fg_urgent     = theme.bg_normal
-theme.fg_minimize   = "#000000"
+theme.fg_minimize   = theme.bg_normal
 
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
